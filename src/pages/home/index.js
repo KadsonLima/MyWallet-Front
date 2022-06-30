@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {Content, Tipo, Title, Transferencias, Saldo, Buttons} from './styles';
+import {Content, Tipo, Title, Transferencias, Saldo, Buttons, Branco} from './styles';
 import axios from "axios";
 import Exit from "../../assets/Vector.png";
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
@@ -34,7 +34,7 @@ function Home() {
           <Tipo tipo={trade.tipo}>{(valor)}</Tipo>
         </div>
       );
-    })}<Saldo><span>Saldo</span>{saldo.toFixed(2)}</Saldo></Transferencias>):"Não há registros de entrada ou saída";
+    })}<Saldo><span>Saldo</span>{saldo.toFixed(2)}</Saldo></Transferencias>):(<Branco>Não há registros de entrada ou saída</Branco>);
   return (
     <Content>
       <Title>

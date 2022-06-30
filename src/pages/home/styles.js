@@ -8,6 +8,20 @@ const Content = styled.div`
   height: 100vh;
 `;
 
+const Branco = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70%;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 13px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #868686;
+`
+
 const Transferencias = styled.div`
   font-family: "Raleway";
   display: flex;
@@ -96,4 +110,4 @@ const Buttons = styled.div`
   
 `;
 
-export {Content, Tipo, Title, Transferencias, Saldo, Buttons};
+export {Content, Tipo, Title, Transferencias, Saldo, Buttons, Branco};
