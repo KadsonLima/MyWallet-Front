@@ -19,17 +19,19 @@ function Login() {
     function submitForm(event){
         event.preventDefault();
         axios.post("http://localhost:5000/", form)
-            .then((e)=>{console.log(e)})
-        navigate("/home");
+            .then((e)=>{console.log(e)
+            navigate("/home");
+                
+            }).catch((e)=>{console.log(e)})
     }
 
     return (
         <Content>
             <Title>MyWallet</Title>
             <FormLogin onSubmit={(e)=>{submitForm(e)}}>
-                <input name='email'  placeholder='E-mail' type="email" onChange={(e)=>{atribuirDados(e)}}></input>
-                <input name="senha" placeholder='Senha' type="password" onChange={(e)=>{atribuirDados(e)}}></input>
-                <input type="submit" value="Entrar"></input>
+                <input name="email"  placeholder='E-mail' type="email" onChange={(e)=>{atribuirDados(e)}}></input>
+                <input name="password"  placeholder='Senha' type="password" onChange={(e)=>{atribuirDados(e)}}></input>
+                <input type="submit"  value="Entrar"></input>
             </FormLogin>
             <Link to="/cadastro" style={{textDecoration:'none'}}><Paragrafo>Primeira vez? Cadastre-se!</Paragrafo></Link>
         </Content>

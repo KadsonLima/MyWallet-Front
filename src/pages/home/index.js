@@ -17,12 +17,10 @@ function Home() {
     });
   }, []);
 
-  console.log(form);
 
   const trades =
     form ?(<Transferencias>{
     form.map((trade, index) => {
-      console.log("tipo", form)
       const valor = parseFloat(trade.valor).toFixed(2);
 
       return (
