@@ -59,8 +59,7 @@ const Saldo = styled.footer`
   display: flex;
   justify-content: space-between;
   position: absolute;
-  position: sticky;
-  bottom: -20px ;
+  bottom: 0 ;
   background-color: white;
   span{
     font-weight: 700;
