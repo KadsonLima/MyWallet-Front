@@ -13,7 +13,6 @@ function Login() {
         setForm(
             {...form, [event.target.name]: event.target.value}
         )
-        console.log(form)
     }
 
     function submitForm(event){
