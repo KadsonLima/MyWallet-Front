@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {TokenContext} from '../../context/TokenContext';
 
 function Login() {
+    const { setToken} = useContext(TokenContext);
 
     const [form, setForm] = useState({});
     const navigate = useNavigate();
@@ -19,6 +21,7 @@ function Login() {
         event.preventDefault();
         axios.post("https://mywalletkash.herokuapp.com/", form)
             .then((e)=>{console.log(e)
+                setToken(e.data)
             navigate("/home");
                 
             }).catch((e)=>{console.log(e)})

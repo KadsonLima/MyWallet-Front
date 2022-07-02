@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useContext} from "react";
 import {Content, Tipo, Title, Transferencias, Saldo, Buttons, Branco} from './styles';
 import axios from "axios";
 import Exit from "../../assets/Vector.png";
-import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai'
+import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai';
+import {TokenContext} from '../../context/TokenContext';
 
 function Home() {
+  const {token, header} = useContext(TokenContext);
   const [form, setForm] = useState(null);
   const [saldo, setSaldo] = useState(null);
 
 
   useEffect(() => {
-    axios.get("https://mywalletkash.herokuapp.com/home").then((e) => {
+    console.log("esse é o token", token, header)
+    axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
       setForm(e.data.kaio);
       setSaldo(e.data.saldo);
       
@@ -37,7 +40,7 @@ function Home() {
   return (
     <Content>
       <Title>
-        <span>MyWallet</span>
+        <span>Olá, {token.name}</span>
         <img src={Exit} alt={Exit} />
       </Title>
       {trades}

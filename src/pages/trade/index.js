@@ -1,11 +1,12 @@
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TokenContext } from '../../context/TokenContext';
 import styled from 'styled-components';
 
 
 function Trade(){
-    
+    const { header} = useContext(TokenContext);
     const tipo = useParams();
     const [trade, setTrade] = useState({tipo:(tipo.trade === 'entrada')? 0 : 1});
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Trade(){
 
         //setTrade({...trade, })
         console.log(trade)
-        axios.post("https://mywalletkash.herokuapp.com/trade", trade)
+        axios.post("https://mywalletkash.herokuapp.com/trade", trade, header)
             .then((e)=>{
                 console.log("SHAIUSAHI", e.data)
                 navigate("/home");
