@@ -9,8 +9,9 @@ function Home() {
   const [form, setForm] = useState(null);
   const [saldo, setSaldo] = useState(null);
 
+
   useEffect(() => {
-    axios.get("http://localhost:5000/home").then((e) => {
+    axios.get("https://mywalletkash.herokuapp.com/home").then((e) => {
       setForm(e.data.kaio);
       setSaldo(e.data.saldo);
       
@@ -37,7 +38,7 @@ function Home() {
     <Content>
       <Title>
         <span>MyWallet</span>
-        <img src={Exit} alt={Exit}/>
+        <img src={Exit} alt={Exit} />
       </Title>
       {trades}
       <Buttons>

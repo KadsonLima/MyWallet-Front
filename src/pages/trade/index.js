@@ -15,7 +15,7 @@ function Trade(){
 
         //setTrade({...trade, })
         console.log(trade)
-        axios.post("http://localhost:5000/trade", trade)
+        axios.post("https://mywalletkash.herokuapp.com/trade", trade)
             .then((e)=>{
                 console.log("SHAIUSAHI", e.data)
                 navigate("/home");
