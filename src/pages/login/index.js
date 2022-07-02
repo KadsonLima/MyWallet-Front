@@ -19,7 +19,7 @@ function Login() {
 
     function submitForm(event){
         event.preventDefault();
-        axios.post("https://mywalletkash.herokuapp.com/", form)
+        axios.post("http://localhost:5000/", form)
             .then((e)=>{console.log(e)
                 setToken(e.data)
             navigate("/home");
