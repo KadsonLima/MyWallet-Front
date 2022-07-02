@@ -11,19 +11,22 @@ function Home() {
   const [form, setForm] = useState(null);
   const [saldo, setSaldo] = useState(null);
 
+  //https://mywalletkash.herokuapp.com/
+  //https://https://mywalletkash.herokuapp.com/
 
   useEffect(() => {
-    console.log("esse é o token", token, header)
     axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
-      setForm(e.data.kaio);
+      console.log(e)
+      setForm(e.data[0].trade);
       setSaldo(e.data.saldo);
+    console.log("esse é o token", form)
       
     });
   }, []);
 
 
   const trades =
-    form ?(<Transferencias>{
+    (form!= null) ?(<Transferencias>{
     form.map((trade, index) => {
       const valor = parseFloat(trade.valor).toFixed(2);
 
@@ -31,12 +34,12 @@ function Home() {
         <div key={index}>
           <div>
             <span>{trade.dia}</span>
-            <p>{trade.nome}</p>
+            <p>{trade.descricao}</p>
           </div>
           <Tipo tipo={trade.tipo}>{(valor)}</Tipo>
         </div>
       );
-    })}<Saldo><span>Saldo</span>{saldo.toFixed(2)}</Saldo></Transferencias>):(<Branco>Não há registros de entrada ou saída</Branco>);
+    })}<Saldo><span>Saldo</span></Saldo></Transferencias>):(<Branco>Não há registros de entrada ou saída</Branco>);
   return (
     <Content>
       <Title>

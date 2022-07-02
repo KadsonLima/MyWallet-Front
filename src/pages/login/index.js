@@ -20,8 +20,8 @@ function Login() {
     function submitForm(event){
         event.preventDefault();
         axios.post("https://mywalletkash.herokuapp.com/", form)
-            .then((e)=>{console.log(e)
-                setToken(e.data)
+            .then((e)=>{
+            setToken(e.data)
             navigate("/home");
                 
             }).catch((e)=>{console.log(e)})
