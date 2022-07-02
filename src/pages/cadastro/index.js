@@ -15,7 +15,7 @@ function Cadastro(){
 
     function submitForm(event){
         event.preventDefault();
-        axios.post("http://localhost:5000/cadastro", form)
+        axios.post("https://mywalletkash.herokuapp.com/cadastro", form)
             .then((e)=>{console.log(e)
             navigate("/");
                 

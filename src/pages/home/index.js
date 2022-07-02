@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     console.log("esse é o token", token, header)
-    axios.get("http://localhost:5000/home", header).then((e) => {
+    axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
       setForm(e.data.kaio);
       setSaldo(e.data.saldo);
       
