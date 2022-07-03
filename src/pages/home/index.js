@@ -17,7 +17,7 @@ function Home() {
   useEffect(() => {
     axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
       console.log(e)
-      setForm(e.data[0].trade);
+      setForm((e.data[0].trade).reverse());
       setSaldo(e.data.saldo);
     console.log("esse é o token", form)
       
