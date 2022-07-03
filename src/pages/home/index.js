@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect , useContext} from "react";
 import {Content, Tipo, Title, Transferencias, Saldo, Buttons, Branco} from './styles';
 import axios from "axios";
@@ -21,9 +21,9 @@ function Home() {
   useEffect(() => {
     
     axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
-      console.log(e)
-      setForm((e.data[0].trade).reverse());
-      setSaldo(e.data.saldo);
+      console.log(e.data)
+      setForm((e.data.getBdUser[0].trade).reverse());
+      setSaldo((e.data.saldo).toFixed(2));
     console.log("esse é o token", token)
       
     });
@@ -44,7 +44,7 @@ function Home() {
           <Tipo tipo={trade.tipo}>{(valor)}</Tipo>
         </div>
       );
-    })}<Saldo><span>Saldo</span></Saldo></Transferencias>):(<Branco>Não há registros de entrada ou saída</Branco>);
+    })}<Saldo><span>Saldo</span>{saldo}</Saldo></Transferencias>):(<Branco>Não há registros de entrada ou saída</Branco>);
   return (
     <Content>
       <Title>
