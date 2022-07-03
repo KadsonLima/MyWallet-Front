@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect , useContext} from "react";
 import {Content, Tipo, Title, Transferencias, Saldo, Buttons, Branco} from './styles';
 import axios from "axios";
@@ -7,22 +7,27 @@ import {AiOutlineMinusCircle, AiOutlinePlusCircle} from 'react-icons/ai';
 import {TokenContext} from '../../context/TokenContext';
 
 function Home() {
-  const {token, header} = useContext(TokenContext);
+
+  const {token, header, setToken} = useContext(TokenContext);
   const [form, setForm] = useState(null);
   const [saldo, setSaldo] = useState(null);
 
   //https://mywalletkash.herokuapp.com/
   //https://https://mywalletkash.herokuapp.com/
+  if(token == null){
+    setToken(JSON.parse(localStorage.getItem('token')))
+  }
 
   useEffect(() => {
+    
     axios.get("https://mywalletkash.herokuapp.com/home", header).then((e) => {
       console.log(e)
       setForm((e.data[0].trade).reverse());
       setSaldo(e.data.saldo);
-    console.log("esse é o token", form)
+    console.log("esse é o token", token)
       
     });
-  }, []);
+  }, [token]);
 
 
   const trades =
@@ -43,7 +48,7 @@ function Home() {
   return (
     <Content>
       <Title>
-        <span>Olá, {token.name}</span>
+        <span>Olá, {(token)&&token.name}</span>
         <img src={Exit} alt={Exit} />
       </Title>
       {trades}

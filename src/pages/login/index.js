@@ -23,7 +23,7 @@ function Login() {
             .then((e)=>{
             setToken(e.data)
             navigate("/home");
-                
+            localStorage.setItem('token', JSON.stringify(e.data))
             }).catch((e)=>{console.log(e)})
     }
 
